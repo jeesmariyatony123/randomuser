@@ -8,7 +8,6 @@ import axios from 'axios';
 
 const User = () => {
     let randomColor = Math.floor(Math.random() * 16777215).toString(16);
-    // Define state variables using useState 
     const [user, setUser] = useState({
         avatar: '',
         first_name: '',
@@ -20,20 +19,16 @@ const User = () => {
         gender: '',
     });
 
-    // State to toggle displaying more user info 
     const [showMoreInfo, setShowMoreInfo] = useState(false);
 
-    // Use useEffect to fetch user data on component mount 
     useEffect(() => {
         getUser();
     }, []);
 
-    // Function to fetch user data from the API 
     const getUser = () => {
         const url =
             'https://random-data-api.com/api/v2/users?response_type=json';
 
-        // Fetch data and update user state when data is received 
         fetch(url)
             .then((resp) => resp.json())
             .then((data) => {
@@ -43,7 +38,6 @@ const User = () => {
             
     };
 
-    // Function to change the theme color randomly 
     const changeThemeColor = () => {
         const randomColor =
             '#' + ((Math.random() * 0xffffff) << 0)
@@ -53,7 +47,6 @@ const User = () => {
             
     };
 
-    // Function to toggle displaying more user info 
     const toggleMoreInfo = () => {
         setShowMoreInfo(!showMoreInfo);
     };
